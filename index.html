@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Факт о кошках</title>
+
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            margin-top: 50px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        p {
+            font-size: 32px; /* Большой текст */
+            font-weight: bold;
+            color: darkblue;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="catBtn">Факт о кошках</button>
+
+    <p id="fact">Нажмите на кнопку, чтобы получить факт.</p>
+
+    <script>
+        const button = document.getElementById("catBtn");
+        const fact = document.getElementById("fact");
+
+        button.onclick = async function () {
+            const response = await fetch("https://catfact.ninja/fact");
+            const data = await response.json();
+
+            fact.textContent = data.fact;
+        };
+    </script>
+
+</body>
+</html>
